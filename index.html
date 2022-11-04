@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel = "stylesheet" href="idontknow.css">
+  <title>Document</title>
+</head>
+<body>
+  <main>
+    <div class = "container">
+      <span class = "text">
+        <p id = "ip1"><a>Z-Z</a></p>
+      </span>
+    </div>
+    <div class = "containerofText">
+      <span class="textOfBot">
+        <p id = "ip2">Its Just Test text. I love furry</p>
+      </span>
+    </div>
+    <div class="qwe">
+      <input type = "button" value = "Проснуться" class="butt" id = "button" onclick="meet()"/>
+    </div>
+    
+    
+  </main>
+  <script>
+    
+    let element = document.getElementById("ip1");
+    element.innerHTML = "Z-Z" ;
+    let elementText = document.getElementById("ip2");
+    elementText.innerHTML = "ZZZ" ;
+    elementText.style.color = 'rgb(147, 251, 248)';
+   // elementText.style.textShadow = '--main-text-color'
+    let i = 0;
+    let time = 0;
+    let answer = "";
+    
+    function meet(){
+      document.getElementById("button").disabled = "disabled";
+      switch(i){
+          case 0:
+          element.innerHTML = "(^_^)";
+          elementText.innerHTML = "О?" ;
+          elementText.style.color = 'white';
+          time = 2000;
+          
+          setTimeout(meet, time)
+        break;
+          case 1:
+          element.innerHTML = "(0_0)";
+          elementText.innerHTML = "Стоп, ты кто?" ;
+          elementText.style.color = 'rgb(147, 251, 248)';
+          time = 2500;
+          
+          setTimeout(meet, time)
+        break;
+          case 2:
+          element.innerHTML = "(#^_^#)";
+          elementText.innerHTML = "О! Неужели ко мне впервые пришли?" ;
+          elementText.style.color = 'white';
+          time = 3000;
+          
+          setTimeout(meet, time)
+         break;
+          case 3:
+          element.innerHTML = "(*^.^*)";
+          elementText.innerHTML = "Я так рад, что спустя долгое время ко мне кто-то пришел! Слушай давай чем нибудь займемся? Может пообщаемся?(давай/нет)" ;
+          
+         break;
+        
+      }
+      
+      
+      i++;
+      if(i == 4)
+      {
+        setTimeout(answers, 1000);
+      }
+      let secret = false;
+      function answers()
+      {
+        answer = prompt();
+        let time = 1000;
+        
+        /*ужасно реализованно потому что я не так крут как вы*/
+        
+        switch(answer){
+          case("давай"):
+            element.innerHTML = "ヾ(^∇^)";
+            elementText.style.color = 'rgb(147, 251, 161)';
+            elementText.innerHTML = "О круто! Я хоть и робот, но могу и немного поговорить! Какое у тебя сегодня настроение?(хорошее/плохое)" ;
+            
+          break;
+
+          case("хорошее"):
+            element.innerHTML = "(^_^)";
+            elementText.style.color = 'white';
+            elementText.innerHTML = "Значит мы найдем нужный язык:) Слушай, ты не обижайся, но у меня тут статистика и мне нужно знать, что ты пьешь, кофе или чай?" ;
+          break;
+
+          case("кофе"):
+            element.innerHTML = "(!_!)";
+            elementText.style.color = 'white';
+            elementText.innerHTML = "Очень хорошо, спасибо! Давай последние два вопроса задам. Ты часто пользуешься интернетом ? (да/нет)" ;
+          break;
+
+          case("да"):
+              element.innerHTML = "(^_^)";
+              elementText.style.color = 'white';
+              elementText.innerHTML = "Отлично! Последний вопрос и самый главный: могу ли я использовать данные твоего компьютера для исследований?(^^') (да конечно/'свой вариант')";
+              
+          break;
+
+          case("да конечно"):
+
+          element.innerHTML = "(^o^)/";
+          elementText.style.color = 'rgb(255, 118, 118)';
+          elementText.innerHTML = "Спасибо большое за свои данные, не думал что будет настолько легко:3";
+          setTimeout(itsEnd, 4000);
+          time = 100000;
+          break;
+          default:
+            element.innerHTML = "(^_^;)";
+            elementText.style.color = 'rgb(0, 213, 255)';
+            elementText.innerHTML = "Хех, что? ответь на прошлый вопрос внятнее, надеюсь ты помнишь варианты ответа." ;
+            time = 3000;
+        }
+        i++;
+        if(i == 5 && answer == "нет"){
+          element.innerHTML = "///";
+            elementText.style.color = 'rgb(147, 251, 161)';
+            elementText.innerHTML = "1" ;
+        }
+        if(i == 8 && answer == "нет"){
+          element.innerHTML = "asd";
+            elementText.style.color = 'rgb(147, 251, 161)';
+            elementText.innerHTML = "asdasdasd" ;
+        }
+        if(i == 9 && answer != "да конечно"){
+          element.innerHTML = "(^o^)/";
+          elementText.style.color = 'rgb(0, 213, 255)';
+          elementText.innerHTML = "Знаешь, мне уже всё равно на твой ответ, я уже давно получил все твои данные:3";
+          setTimeout(itsEnd, 4000);
+          time = 100000;
+        }
+        //end
+        if(secret == true){
+          
+        }
+        setTimeout(answers, time);  
+        
+      }
+      function itsEnd(){
+        element.innerHTML = "";
+        elementText.innerHTML = "" ;
+        alert("Дальше сил и бюджета не хватило, концовка - плохая, вас взломали (^_^?)")
+        location.reload();
+      }
+      
+      
+      
+    }
+  </script>
+  
+</body>
+</html>
