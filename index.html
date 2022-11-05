@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel = "stylesheet" href="idontknow.css">
-  <title>Document</title>
+  <title>Bot(UwU)</title>
 </head>
 <body>
   <main>
@@ -22,13 +22,41 @@
     <div class="qwe">
       <input type = "button" value = "Проснуться" class="butt" id = "button" onclick="meet()"/>
     </div>
+    <div class="endButt">
+      <input type = "button" value = "Выключить бота" class="buttEnd" id = "buttonEnd" onclick="itsEndNeytrall()" disabled/>
+    </div>
+    <div class="endButtBad">
+      <input type = "button" value = "Захватить мир" class="buttEnd" id = "buttonEndBad" onclick="itsEndBadAll()" disabled/>
+    </div>
+    <div class="endButtHappy">
+      <input type = "button" value = "удалить бота" class="buttEnd" id = "buttonEndHappy" onclick="itsEndHappy()" disabled/>
+    </div>
     
     
   </main>
   <script>
-    
+    function itsEndNeytrall(){
+        console.log("End");
+        element.innerHTML = "";
+        elementText.innerHTML = "" ;
+        alert("Дальше сил и бюджета не хватило, концовка - нейтральная, вы не смогли удалить бота, и бот может удалить данные теперь других людей:(")
+        location.reload();
+      }
+      function itsEndBadAll(){
+        element.innerHTML = "";
+        elementText.innerHTML = "" ;
+        alert("Дальше сил и бюджета не хватило, концовка - плохая, ВЫ ВЗЛОМАЛИ ДАННЫЕ ВСЕГО МИРА! МОЛОДЦЫ!")
+        location.reload();
+      }
+      function itsEndHappy(){
+        element.innerHTML = "";
+        elementText.innerHTML = "" ;
+        alert("Дальше сил и бюджета не хватило, концовка - отличная, вы спасли мир от ужасного бота поздравляю!")
+        location.href = 'endBot.html';
+      }
+      
     let element = document.getElementById("ip1");
-    element.innerHTML = "Z-Z" ;
+    element.innerHTML = "(-.-)" ;
     let elementText = document.getElementById("ip2");
     elementText.innerHTML = "ZZZ" ;
     elementText.style.color = 'rgb(147, 251, 248)';
@@ -79,13 +107,20 @@
         setTimeout(answers, 1000);
       }
       let secret = false;
+      let answerNo= 0;
       function answers()
       {
         answer = prompt();
         let time = 1000;
         
         /*ужасно реализованно потому что я не так крут как вы*/
-        
+        if(secret == true && answer != "да конечно"){
+          element.innerHTML = "(^o^)/";
+          elementText.style.color = 'rgb(0, 213, 255)';
+          elementText.innerHTML = "Знаешь, мне уже всё равно на твой ответ, я уже давно получил все твои данные:3";
+          setTimeout(itsEndBad, 4000);
+          time = 100000;
+        }
         switch(answer){
           case("давай"):
             element.innerHTML = "ヾ(^∇^)";
@@ -93,7 +128,12 @@
             elementText.innerHTML = "О круто! Я хоть и робот, но могу и немного поговорить! Какое у тебя сегодня настроение?(хорошее/плохое)" ;
             
           break;
-
+          case("плохое"):
+          element.innerHTML = "(-_-)";
+            elementText.style.color = 'rgb(147, 251, 248)';
+            answerNo= 1;
+            elementText.innerHTML = "это очень печально:( Слушай, а давай я тогда расскажу анекдот?(валяй/нет)" ;
+          break;
           case("хорошее"):
             element.innerHTML = "(^_^)";
             elementText.style.color = 'white';
@@ -104,11 +144,20 @@
             element.innerHTML = "(!_!)";
             elementText.style.color = 'white';
             elementText.innerHTML = "Очень хорошо, спасибо! Давай последние два вопроса задам. Ты часто пользуешься интернетом ? (да/нет)" ;
+            answerNo= 2;
+          break;
+          case("чай"):
+            element.innerHTML = "(!_!)";
+            elementText.style.color = 'white';
+            elementText.innerHTML = "Очень хорошо, спасибо! Давай последние два вопроса задам. Ты часто пользуешься интернетом ? (да/нет)" ;
+            answerNo= 2;
           break;
 
           case("да"):
               element.innerHTML = "(^_^)";
               elementText.style.color = 'white';
+              secret = true;
+              answerNo = 10;
               elementText.innerHTML = "Отлично! Последний вопрос и самый главный: могу ли я использовать данные твоего компьютера для исследований?(^^') (да конечно/'свой вариант')";
               
           break;
@@ -118,41 +167,59 @@
           element.innerHTML = "(^o^)/";
           elementText.style.color = 'rgb(255, 118, 118)';
           elementText.innerHTML = "Спасибо большое за свои данные, не думал что будет настолько легко:3";
-          setTimeout(itsEnd, 4000);
+          setTimeout(itsEndBad, 4000);
           time = 100000;
           break;
-          default:
-            element.innerHTML = "(^_^;)";
-            elementText.style.color = 'rgb(0, 213, 255)';
-            elementText.innerHTML = "Хех, что? ответь на прошлый вопрос внятнее, надеюсь ты помнишь варианты ответа." ;
-            time = 3000;
-        }
-        i++;
-        if(i == 5 && answer == "нет"){
-          element.innerHTML = "///";
-            elementText.style.color = 'rgb(147, 251, 161)';
-            elementText.innerHTML = "1" ;
-        }
-        if(i == 8 && answer == "нет"){
-          element.innerHTML = "asd";
-            elementText.style.color = 'rgb(147, 251, 161)';
-            elementText.innerHTML = "asdasdasd" ;
-        }
-        if(i == 9 && answer != "да конечно"){
-          element.innerHTML = "(^o^)/";
-          elementText.style.color = 'rgb(0, 213, 255)';
-          elementText.innerHTML = "Знаешь, мне уже всё равно на твой ответ, я уже давно получил все твои данные:3";
-          setTimeout(itsEnd, 4000);
-          time = 100000;
-        }
-        //end
-        if(secret == true){
           
         }
+        if(answerNo == 0 && answer == "нет"){
+            element.innerHTML = "(T_T)";
+            elementText.style.color = 'rgb(147, 251, 161)';
+            elementText.innerHTML = "ну почему? разве ты не хочешь узнать меня получше?" ;
+            document.getElementById("buttonEnd").disabled = false;
+            time = 100000;
+        }
+        else if(answerNo == 1 && answer == "валяй"){
+            element.innerHTML = "(^o^)";
+            elementText.style.color = 'white';
+            elementText.innerHTML = "Бредет нарик по пустыне. Навстречу едет бедуин на верблюде. - Эй, парень, у вас здесь что - гололед? - Ты чего, идиот, какой тут гололед?! - А почему столько песка насыпали! Смешно? :D(смешно/ не смешно)";
+        }
+        else if(answerNo == 1 && answer == "нет"){
+            element.innerHTML = "(>_<)";
+            elementText.style.color = 'white';
+            elementText.innerHTML = "приходи когда твоё настроение будет чуть лучше, я не расчитан на такое состояние(";
+            document.getElementById("buttonEnd").disabled = false;
+            time = 100000;
+        }
+        else if(answerNo == 1 && answer == "смешно"){
+            element.innerHTML = "(#^_^#)";
+            elementText.innerHTML = "Я рад, слушай, а ты мне нравишься, хочешь я покажу тебе мою панель управления?(конечно)";
+            answerNo = 3;
+        }
+        else if(answerNo == 1 && answer == "не смешно"){
+            element.innerHTML = "(>_<)";
+            elementText.style.color = 'rgb(147, 251, 248)';
+            elementText.innerHTML = "Ну ладно, можно тогда я начну собирать с тебя статистику?(да/нет)";
+        }
+        else if(answerNo == 3 && answer == "конечно"){
+            element.innerHTML = "(^_^;)>>";
+            elementText.style.color = 'rgb(147, 251, 248)';
+            elementText.innerHTML = "`после экскурсии` ну а тут панель управления, за наше общение я получил столько возможностей, и мне нужна твоя помощь, нажми на ту правую кнопку)))";
+            document.getElementById("buttonEndBad").disabled = false;
+            document.getElementById("buttonEndHappy").disabled = false;
+            time = 100000;
+        }
+        else if(answerNo == 2 && answer == "нет"){
+            element.innerHTML = "(?_?)";
+            elementText.style.color = 'rgb(147, 251, 161)';
+            elementText.innerHTML = "Всмысле, а как ты тогда меня нашел?" ;
+            document.getElementById("buttonEnd").disabled = false;
+            time = 100000;
+        }
+        //end
         setTimeout(answers, time);  
-        
       }
-      function itsEnd(){
+      function itsEndBad(){
         element.innerHTML = "";
         elementText.innerHTML = "" ;
         alert("Дальше сил и бюджета не хватило, концовка - плохая, вас взломали (^_^?)")
